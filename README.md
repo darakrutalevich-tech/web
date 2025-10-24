@@ -3,3 +3,6 @@
 1) 1 лабораторная работа
  - [x] [Обязанности котиков](https://darakrutalevich-tech.github.io/web/first/first-task/)
  - [x] [Могилев](https://darakrutalevich-tech.github.io/web/first/second-task/)  
+2) 2 лабораторная работа:
+ - [x] [Сравнение машин](https://darakrutalevich-tech.github.io/web/second/first-task/)
+ - [x] [БМВ](https://darakrutalevich-tech.github.io/web/second/second-task/)  
