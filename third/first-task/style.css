@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+    color: inherit;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h1 {
+    color: red;
+}
+
+h2 {
+    color: rgb(246, 239, 226);
+}
+
+h3 {
+    color: pink;
+}
+
+p {
+    color: purple;
+}
+
+li {
+    color: gray;
+}
+
+button {
+    color: black;
+}
+
+input {
+    color: white;
+}
+
+.main-title {
+    color: red;
+}
+
+.link {
+    color: green;
+}
+
+.special-link {
+    color: blue;
+}
+
+.nav-list .link:nth-child(3) {
+    color: yellow;
+}
+
+.post {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+.highlighted {
+    color: black;
+}
+
+.note {
+    color: maroon;
+}
+
+.submit-btn {
+    color: #f0f0f0;
+    background-color: #000000;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+}
+
+#first-post {
+    background-color: #faca8f;
+}
+
+#second-post {
+    background-color: #d6aaff;
+}
+
+#name {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 5px;
+    color: #000000;
+}
+
+[href="#"] {
+    text-decoration: none;
+}
+
+[href="#"]:hover {
+    text-decoration: underline;
+}
+
+[placeholder="Белый"] {
+    background-color: white;
+    color: #333;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+.nav-list li:nth-child(2) {
+    font-weight: bold;
+}
+
+.color-list li:nth-child(2) {
+    color: brown;
+}
+
+.post:nth-child(2) p {
+    color: purple;
+}
+
+.submit-btn:hover {
+    background-color: #ddd;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+.widget::before {
+    content: "★ ";
+    color: gold;
+}
+
+.note::after {
+    content: " (важно)";
+    color: darkred;
+    font-size: 0.8em;
+}
+
+.content .post p {
+    font-style: italic;
+}
+
+.sidebar .widget h3 {
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 5px;
+}
+
+.nav-list li a {
+    display: block;
+    padding: 5px 10px;
+}
+
+.form label {
+    color: #666;
+    margin-right: 10px;
+}
+
+h1+nav {
+    margin-top: 20px;
+}
+
+h2+p {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.widget+.widget {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+label+input {
+    margin-left: 10px;
+}
+
+input+button {
+    margin-left: 15px;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-list {
+    list-style: none;
+    padding: 0;
+}
+
+.color-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.important-widget {
+    border: 2px solid maroon;
+    padding: 15px;
+    border-radius: 5px;
+}
