@@ -1,0 +1,89 @@
+.box-static {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(180, 247, 247);
+    margin-bottom: 10px;
+}
+.box-relative-1 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(96, 225, 135);
+    left: 30px;
+    top: 15px;
+}
+.box-relative-2 {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    background-color: rgb(255, 161, 194);
+    left: 40px;
+    top: -10px;
+}
+.container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: rgb(186, 186, 186);
+}
+.box-absolute-1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 127, 42);
+    left: 40px;
+    top:40px;
+    z-index: 2;
+}
+.box-absolute-2  {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-color: rgb(106, 240, 255);
+    left: 60px;
+    top: 70px;
+    z-index: 1;
+}
+.box-absolute-3 {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background-color: rgb(115, 1, 146);
+    left: 80px;
+    top: 100px;
+}
+.box-fixed-1 {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    top: 0px;
+    right: 0px;
+    background-color: rgb(255, 245, 47);
+}
+.box-fixed-2 {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgb(255, 155, 68);
+    z-index: 3;
+}
+.box-zindex-1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 104, 104);
+    right: 400px;
+    top: 50px;
+    z-index: 5;
+}
+.box-zindex-2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(0, 217, 177);
+    right: 350px;
+    top: 100px;
+    z-index: 4;
+}
