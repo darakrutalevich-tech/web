@@ -14,3 +14,4 @@
  - [x] [Дополнительно задание с достижениями](https://darakrutalevich-tech.github.io/web/forth/second/)
 5) 6 лабораторная работа:
  - [x] [Сетка](https://darakrutalevich-tech.github.io/web/fifth/first/)
+ - [x] [Визитка+достижения+технологии](https://darakrutalevich-tech.github.io/web/fifth/second/) 
