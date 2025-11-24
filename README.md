@@ -12,3 +12,5 @@
 4) 5 лабораторная работа:
  - [x] [Позиционирование](https://darakrutalevich-tech.github.io/web/forth/first/)
  - [x] [Дополнительно задание с достижениями](https://darakrutalevich-tech.github.io/web/forth/second/)
+5) 6 лабораторная работа:
+ - [x] [Сетка](https://darakrutalevich-tech.github.io/web/fifth/first/)
