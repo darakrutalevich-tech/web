@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Todo App</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" media="screen" charset="utf-8">
+</head>
+
+<body class="page">
+  <nav class="nav">
+    <div class="nav__container">
+      <div class="nav__logo">TodoApp</div>
+      <ul class="nav__menu">
+        <li><a href="#main-content" class="nav__link">Tasks</a></li>
+        <li><a href="#completed" class="nav__link">Completed</a></li>
+        <li><a href="#incompleted" class="nav__link">Incompleted</a></li>
+      </ul>
+      <div class="nav__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <header id="header" class="header">
+    <img src="./eisenhower-matrix.jpg" alt="Eisenhower matrix" class="header__image">
+  </header>
+
+  <article id="main-content" class="todo-app">
+    <section class="todo-app__filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn" data-filter="incomplete">Incompleted</button>
+    </section>
+
+    <section class="todo-app__add-section">
+      <label for="new-task" class="todo-app__label">Add Item</label>
+      <div class="todo-app__input-wrapper">
+        <input id="new-task" class="todo-app__input" type="text" placeholder="Enter a new task">
+        <button class="todo-app__button todo-app__button_add">Add</button>
+      </div>
+    </section>
+
+    <section id="incompleted" class="todo-app__section">
+      <h3 class="todo-app__subtitle">Todo</h3>
+      <ul id="incomplete-tasks" class="todo-app__list">
+      </ul>
+    </section>
+
+    <section id="completed" class="todo-app__section">
+      <h3 class="todo-app__subtitle">Completed</h3>
+      <ul id="completed-tasks" class="todo-app__list">
+      </ul>
+    </section>
+  </article>
+  <script src="app.js"></script>
+</body>
+
+</html>
