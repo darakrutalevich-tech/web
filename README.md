@@ -15,3 +15,6 @@
 5) 6 лабораторная работа:
  - [x] [Сетка](https://darakrutalevich-tech.github.io/web/fifth/first/)
  - [x] [Визитка+достижения+технологии](https://darakrutalevich-tech.github.io/web/fifth/second/) 
+6) 7 лабораторная работа в папке sixth.
+7) 8 лабораторная работа:
+ - [x] [TODO](https://darakrutalevich-tech.github.io/web/seventh/)
