@@ -18,3 +18,4 @@
 6) 7 лабораторная работа в папке sixth.
 7) 8 лабораторная работа:
  - [x] [TODO](https://darakrutalevich-tech.github.io/web/seventh/)
+8) 9 лабораторная работа в папке nineth.
