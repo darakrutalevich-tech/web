@@ -7,111 +7,231 @@
   <title>jQuery Практика</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-
-    h1,
-    h2 {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
       color: #333;
-      border-bottom: 2px solid #4CAF50;
-      padding-bottom: 10px;
     }
 
-    .task {
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .page-title {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+      font-size: 3rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #4f46e5;
+      margin-bottom: 25px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 40px;
+      height: 4px;
+      background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+      border-radius: 2px;
+    }
+
+    .todo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .todo-item {
       background: white;
       padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      font-size: 1.1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    #todo-list {
-      list-style-type: none;
-      padding: 0;
+    .todo-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     }
 
-    #todo-list li {
-      padding: 12px;
-      margin: 5px 0;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+    .todo-item.even {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-color: #38bdf8;
     }
 
-    .even {
-      background-color: #f0f0f0 !important;
+    .todo-item.odd {
+      background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+      border-color: #d946ef;
     }
 
-    .odd {
-      background-color: white !important;
+    .control-btn {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      border: none;
+      padding: 18px 36px;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+    }
+
+    .control-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(79, 70, 229, 0.4);
+    }
+
+    .control-btn:disabled {
+      background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+      transform: none;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .control-btn::before {
+      content: '⚡';
+      font-size: 1.2rem;
+    }
+
+    .form-container {
+      display: grid;
+      gap: 25px;
     }
 
     .form-group {
-      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
+    .form-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4b5563;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-label::before {
+      content: '→';
+      color: #4f46e5;
       font-weight: bold;
     }
 
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 2px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
-      font-size: 16px;
+    .form-input {
+      padding: 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: white;
     }
 
-    input.error {
-      border-color: #f44336;
-      background-color: #ffebee;
+    .form-input:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
     }
 
-    .btn {
-      background-color: #4CAF50;
+    .form-input.error {
+      border-color: #ef4444;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      animation: shake 0.5s cubic-bezier(.36, .07, .19, .97);
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translateX(-1px);
+      }
+
+      20%,
+      80% {
+        transform: translateX(2px);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translateX(-3px);
+      }
+
+      40%,
+      60% {
+        transform: translateX(3px);
+      }
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: white;
-      padding: 12px 24px;
       border: none;
-      border-radius: 4px;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
     }
 
-    .btn:hover {
-      background-color: #45a049;
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(16, 185, 129, 0.4);
     }
 
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .greeting {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #e8f5e9;
-      border-radius: 4px;
-      border-left: 4px solid #4CAF50;
-      font-size: 18px;
+    .greeting-box {
+      margin-top: 25px;
+      padding: 25px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 16px;
+      border-left: 6px solid #3b82f6;
       display: none;
+      animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .greeting.show {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-
-    @keyframes fadeIn {
+    @keyframes slideIn {
       from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(20px);
       }
 
       to {
@@ -120,140 +240,143 @@
       }
     }
 
-    .highlight {
-      animation: highlight 0.5s;
+    .greeting-box.show {
+      display: block;
     }
 
-    @keyframes highlight {
+    .greeting-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 8px;
+    }
+
+    .greeting-subtext {
+      color: #4b5563;
+      opacity: 0.8;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin: 0 5px;
+      font-weight: 600;
+    }
+
+    .highlight {
+      animation: pulse 0.5s ease;
+    }
+
+    @keyframes pulse {
       0% {
-        background-color: yellow;
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
       }
 
       100% {
-        background-color: inherit;
+        transform: scale(1);
       }
     }
 
-    .instructions {
-      background-color: #e3f2fd;
-      padding: 15px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      border-left: 4px solid #2196F3;
-    }
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.2rem;
+      }
 
-    .instructions h3 {
-      color: #1976D2;
-      margin-top: 0;
-    }
+      .section-title {
+        font-size: 1.7rem;
+      }
 
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #666;
-      font-size: 14px;
+      .glass-card {
+        padding: 25px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Практика с jQuery</h1>
+  <div class="container">
+    <h1 class="page-title">jQuery Практика</h1>
 
-  <div class="instructions">
-    <h3>Задание 1: Основы селекторов и манипуляций</h3>
-    <p>Нажмите кнопку ниже чтобы:</p>
-    <ul>
-      <li>Изменить заголовок страницы</li>
-      <li>Раскрасить четные/нечетные элементы списка</li>
-      <li>Добавить новый пункт "Изучить jQuery"</li>
-    </ul>
-  </div>
-
-  <div class="task" id="task1">
-    <h2>Список дел</h2>
-    <ul id="todo-list">
-      <li>Познакомиться с jQuery</li>
-      <li>Изучить селекторы</li>
-      <li>Освоить методы манипуляции DOM</li>
-      <li>Попрактиковаться с событиями</li>
-      <li>Создать интерактивные элементы</li>
-    </ul>
-
-    <button id="manipulate-btn" class="btn">Выполнить манипуляции</button>
-  </div>
-
-  <div class="instructions">
-    <h3>Задание 2: Работа с событиями и формами</h3>
-    <p>Попробуйте:</p>
-    <ul>
-      <li>Оставить поле "Имя" пустым и убрать фокус</li>
-      <li>Заполнить форму и нажать "Отправить"</li>
-    </ul>
-  </div>
-
-  <div class="task" id="task2">
-    <h2>Форма приветствия</h2>
-    <form id="greeting-form">
-      <div class="form-group">
-        <label for="name">Имя:</label>
-        <input type="text" id="name" name="name" placeholder="Введите ваше имя">
+    <div class="glass-card">
+      <h2 class="section-title">Список задач</h2>
+      <div class="todo-list" id="todo-list">
+        <div class="todo-item">Познакомиться с jQuery</div>
+        <div class="todo-item">Изучить селекторы</div>
+        <div class="todo-item">Освоить методы манипуляции DOM</div>
+        <div class="todo-item">Попрактиковаться с событиями</div>
+        <div class="todo-item">Создать интерактивные элементы</div>
       </div>
+      <button class="control-btn" id="manipulate-btn">Выполнить манипуляции</button>
+    </div>
 
-      <div class="form-group">
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" placeholder="Введите пароль">
+    <div class="glass-card">
+      <h2 class="section-title">Форма приветствия</h2>
+      <form id="greeting-form" class="form-container">
+        <div class="form-group">
+          <label class="form-label" for="name">Имя</label>
+          <input type="text" id="name" class="form-input" placeholder="Введите ваше имя">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Пароль</label>
+          <input type="password" id="password" class="form-input" placeholder="Введите пароль">
+        </div>
+
+        <button type="submit" class="submit-btn">Отправить приветствие</button>
+      </form>
+
+      <div id="greeting-message" class="greeting-box">
+        <div class="greeting-text"></div>
+        <div class="greeting-subtext">Форма успешно обработана</div>
       </div>
+    </div>
 
-      <button type="submit" class="btn">Отправить</button>
-    </form>
-
-    <div id="greeting-message" class="greeting"></div>
+    <div class="footer">
+      jQuery <span class="badge">v3.7.1</span> • Практическое задание
+    </div>
   </div>
-
-  <footer>
-    jQuery v3.7.1 | Практическое задание по манипуляциям с DOM и событиями
-  </footer>
 
   <script>
     $(document).ready(function () {
-      console.log("jQuery подключен и готов к работе! 🚀");
       $('#manipulate-btn').click(function () {
-        console.log("Кнопка манипуляций нажата!");
+        $('title').text('jQuery - Задание выполнено!');
+        $('.page-title').html('jQuery Практика <span class="badge">✓ Выполнено</span>');
 
-        $('title').text('jQuery - Успешно изменено!');
-        $('h1').html('jQuery Практика <small style="color:#4CAF50">(Заголовок изменен!)</small>');
-
-        $('#todo-list li').each(function (index) {
-          if ((index + 1) % 2 === 0) {
-            $(this).addClass('even').removeClass('odd');
-          } else {
-            $(this).addClass('odd').removeClass('even');
-          }
+        $('#todo-list .todo-item').each(function (index) {
+          $(this).removeClass('even odd').addClass(index % 2 === 0 ? 'odd' : 'even');
           $(this).addClass('highlight');
           setTimeout(() => $(this).removeClass('highlight'), 500);
         });
 
-        const newItem = $('<li>').text('Изучить jQuery');
+        const newItem = $('<div>').addClass('todo-item').text('Изучить jQuery');
         newItem.css({
-          'font-weight': 'bold',
-          'color': '#4CAF50'
-        });
+          'font-weight': '700',
+          'background': 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+          'border-color': '#f59e0b'
+        }).hide().appendTo('#todo-list').fadeIn(600);
 
-        newItem.hide().appendTo('#todo-list').fadeIn(800);
-
-        $(this).prop('disabled', true)
-          .text('Задание выполнено!')
-          .css('background-color', '#9E9E9E');
+        $(this).prop('disabled', true).text('Задание выполнено!');
       });
 
       $('#name').blur(function () {
-        const nameValue = $(this).val().trim();
-        if (nameValue === '') {
+        if ($(this).val().trim() === '') {
           $(this).addClass('error');
-          console.log('Ошибка: поле "Имя" пустое!');
         } else {
           $(this).removeClass('error');
-          console.log(`Имя заполнено: ${nameValue}`);
         }
       });
 
@@ -271,16 +394,12 @@
 
         if (name === '') {
           $('#name').addClass('error').focus();
-          alert('Пожалуйста, заполните поле "Имя"');
           return;
         }
 
-        const greeting = `Привет, ${name}! Рады видеть вас!`;
-        $('#greeting-message')
-          .html(`<strong>${greeting}</strong><br><small style="color:#666;">Форма успешно отправлена</small>`)
-          .addClass('show');
+        $('#greeting-message .greeting-text').text(`Привет, ${name}!`);
+        $('#greeting-message').addClass('show');
 
-        console.log(`Форма отправлена. Имя: ${name}, Длина пароля: ${password.length} символов`);
         $('#password').val('');
 
         setTimeout(() => {
@@ -288,28 +407,10 @@
         }, 5000);
       });
 
-      $('#todo-list li').hover(
-        function () {
-          $(this).css('transform', 'translateX(5px)');
-        },
-        function () {
-          $(this).css('transform', 'translateX(0)');
-        }
-      );
-
-      $(window).scroll(function () {
-        const scrollPos = $(window).scrollTop() + 100;
-
-        $('.task').each(function () {
-          const taskTop = $(this).offset().top;
-          const taskBottom = taskTop + $(this).outerHeight();
-
-          if (scrollPos >= taskTop && scrollPos <= taskBottom) {
-            $(this).css('box-shadow', '0 5px 20px rgba(76, 175, 80, 0.3)');
-          } else {
-            $(this).css('box-shadow', '0 2px 10px rgba(0,0,0,0.1)');
-          }
-        });
+      $('#todo-list').on('mouseenter', '.todo-item', function () {
+        $(this).css('transform', 'translateY(-6px)');
+      }).on('mouseleave', '.todo-item', function () {
+        $(this).css('transform', 'translateY(0)');
       });
     });
   </script>
