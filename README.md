@@ -20,3 +20,5 @@
  - [x] [TODO](https://darakrutalevich-tech.github.io/web/seventh/)
 8) 9 лабораторная работа:
  - [x] [Асинхронность](https://darakrutalevich-tech.github.io/web/nineth/)
+9) 10 лабораторная работа:
+ - [x] [JQuery](https://darakrutalevich-tech.github.io/web/tenth/)
