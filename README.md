@@ -19,4 +19,4 @@
 7) 8 лабораторная работа:
  - [x] [TODO](https://darakrutalevich-tech.github.io/web/seventh/)
 8) 9 лабораторная работа:
- - [x] [TODO](https://darakrutalevich-tech.github.io/web/nineth/)
+ - [x] [Асинхронность](https://darakrutalevich-tech.github.io/web/nineth/)
